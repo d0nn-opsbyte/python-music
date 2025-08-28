@@ -95,7 +95,7 @@ def add_song_to_playlist(playlist_id, title, artist, album=None):
         )
         session.add(new_song)
         session.commit()
-        print(f"Added '{title}' by {artist} to '{playlist.title}'! ✅")
+        print(f"Added '{title}' by {artist} to '{playlist.title}'! ")
         return new_song
         
     except ValueError as e:
