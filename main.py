@@ -7,7 +7,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 try:
     from lib.cli import cli
-    print("🎵 Music App CLI Starting... 🎵")
+    print(" Music App CLI Starting... ")
     if __name__ == '__main__':
         cli()
 except ImportError as e:
