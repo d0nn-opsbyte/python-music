@@ -1,4 +1,4 @@
-from models import session, User, Playlist, Song
+from .models import session, User, Playlist, Song
 from datetime import datetime
 from tabulate import tabulate
 

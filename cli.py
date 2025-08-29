@@ -1,10 +1,10 @@
 import click
-from helpers import (
+from lib.helpers import (
     list_users, create_user, create_playlist, view_user_playlists,
     view_playlist_songs, add_song_to_playlist, delete_song,
     search_songs, seed_sample_data
 )
-from models import session
+from lib.models import session
 
 @click.group()
 def cli():
