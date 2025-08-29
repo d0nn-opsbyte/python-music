@@ -3,15 +3,36 @@ from datetime import datetime
 from tabulate import tabulate
 
 def list_users():
+    from tabulate import tabulate
+    
     users = session.query(User).order_by(User.name).all()
     if not users:
         print("No users found.")
         return users
     
-    print("\n--- All Users ---")
+   
+    user_data = []
     for user in users:
         total_songs = sum(len(playlist.songs) for playlist in user.playlists)
-        print(f"{user.id}. {user.name} - {user.email} (Joined: {user.created_at.strftime('%Y-%m-%d')})")
+        total_playlists = len(user.playlists)
+        
+        user_data.append([
+            user.id,
+            user.name, 
+            user.email,
+            user.created_at.strftime('%Y-%m-%d'),
+            total_playlists,
+            total_songs
+        ])
+    
+
+    headers = ["ID", "Name", "Email", "Joined Date", "Playlists", "Total Songs"]
+    print("\n" + "="*80)
+    print("ALL USERS")
+    print("="*80)
+    print(tabulate(user_data, headers=headers, tablefmt="grid"))
+    print("="*80)
+    
     return users
 
 def create_user(name, email):
@@ -57,8 +78,10 @@ def create_playlist(user_id, title, description=None):
     except Exception as e:
         session.rollback()
         raise Exception(f"Unexpected error: {e}")
-
+\
 def view_user_playlists(user_id):
+    from tabulate import tabulate
+    
     user = session.get(User, user_id)
     if not user:
         raise ValueError("User not found!")
@@ -69,13 +92,16 @@ def view_user_playlists(user_id):
         return playlists
         
     print(f"\n--- {user.name}'s Playlists ---")
+    
+   
+    playlist_data = []
     for playlist in playlists:
         song_count = session.query(Song).filter_by(playlist_id=playlist.id).count()
-        print(f"{playlist.id}. {playlist.title}")
-        if playlist.description:
-            print(f"   Description: {playlist.description}")
-        print(f"   Songs: {song_count}")
-        print()
+        playlist_data.append([playlist.id, playlist.title, song_count])
+    
+    
+    headers = ["ID", "Playlist", "Songs"]
+    print(tabulate(playlist_data, headers=headers, tablefmt="simple"))
     return playlists
 
 def add_song_to_playlist(playlist_id, title, artist, album=None):
