@@ -33,26 +33,26 @@ A command-line application built with Python and SQLAlchemy for managing music p
 
 ## Contributing
 
-Fork the repository
+- **Fork the repository**
 
-Create a feature branch: git checkout -b feature-name
+- **Create a feature branch: git checkout -b feature-name**
 
-Commit changes: git commit -am 'Add new feature'
+- **Commit changes: git commit -am 'Add new feature'**
 
-Push to branch: git push origin feature-name
+- **Push to branch: git push origin feature-name**
 
-Submit a pull request
+- **Submit a pull request**
 
 
 ## License 
 
 This project is open source and available under the MIT License. This means:
 
-**You can use it for free**
+- **You can use it for free**
 
-**You can modify it**
+- **You can modify it**
 
-**You can share it with others**
+- **You can share it with others**
 
 ## Contacts
 
